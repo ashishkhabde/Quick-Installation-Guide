@@ -29,6 +29,7 @@ markdown: kramdown
 theme: just-the-docs
 # Enable or disable the site search
 search_enabled: true
+future: true
 
 plugins:
   - jekyll-feed
