@@ -1,0 +1,283 @@
+{
+  "0": {
+    "id": "0",
+    "title": "Accessing ownCloud Files Using WebDAV",
+    "content": "Accessing ownCloud Files Using WebDAV You can connect and synchronize your files placed on ownCloud over WebDAV, as ownCloud supports the WebDAV protocol. Web Distributed Authoring and Versioning (WebDAV) is a Hypertext Transfer Protocol (HTTP) extension that makes it much easier to create, read, and edit files on Web Servers. With WebDAV you can access your ownCloud shares on Linux, Mac OS X and Windows in the same way as any remote network share, and stay synchronized. You may also connect your desktop PC to your ownCloud Server by using the WebDAV protocol instead of using another client application.",
+    "url": "http://localhost:4000/2019-04-03-Accessing_ownCloud_Files_Using_WebDAV.html",
+    "relUrl": "/2019-04-03-Accessing_ownCloud_Files_Using_WebDAV.html"
+  },
+  "1": {
+    "id": "1",
+    "title": "Comments",
+    "content": "Comments Please send us your comments on this document to doc.comments@ownCloud.com. Please include the document title, revision, and page number and refer to specific sections and paragraphs wherever possible.",
+    "url": "http://localhost:4000/2019-04-03-Comments.html",
+    "relUrl": "/2019-04-03-Comments.html"
+  },
+  "2": {
+    "id": "2",
+    "title": "Configuring Storage",
+    "content": "Configuring Storage You can create and add new external storage mount; however, all the external storage must be first configured in the application. To configure external storage in the support application: Click Storage in the Admin section, on the Settings page. Select Enable external storage, on the External Storage page. Configure the following: Field Name Description Folder Name Enter the folder name. Note: Folder name does not accept alphanumeric characters External Storage Select the external storage from the available list in dropdown. Authentication Select the authentication method from the Authentication drop down list. The configuration fields for mounting external storage is based on the authentication method. Note: ownCloud storage application accepts one or more authentication methods such as, user name and passwords, login credentials, or RSA- public key etc. Configuration The configuration parameters are displayed based on the Authentication mechanism. For example, If the Authentication mechanism is set as Username and Password, in that case the fields displayed for Configuration parameters are: Host name, Root, Username and Password External storage details are saved automatically, once all the fields are entered. The following color dots are displayed against each storage row which indicates the following: Green dot: Specifies the storage is ready to use. Red or yellow dot: Specifies ownCloud is unable to connect to the external storage. In this case, you need to check the configuration and network connectivity. Note: If an error occurs on any of the external storage, the storage becomes unavailable within 10 minutes. Click the colored dot to identify the error and reload the page.",
+    "url": "http://localhost:4000/2019-04-03-Configuring-Storage.html",
+    "relUrl": "/2019-04-03-Configuring-Storage.html"
+  },
+  "3": {
+    "id": "3",
+    "title": "Configuring Apache 2 site configuration file for ownCloud",
+    "content": "Configuring Apache 2 site configuration file for ownCloud * To configure Apache 2 site configuration file for ownCloud:* Run the following command to create a new ownCloud.conf configuration file: sudo nano /etc/apache2/sites-available/ownCloud.conf Paste the following in the ownCloud.conf configuration file and Save. Paste the below content in the file and Save and Exit: Note: Enter your domain name and directory root location. &lt;VirtualHost *:80&gt; ServerAdmin admin@example.com DocumentRoot /var/www/html/ownCloud/ ServerName example.com ServerAlias www.example.com Alias /ownCloud &quot;/var/www/html/ownCloud/&quot; &lt;Directory /var/www/html/ownCloud/&gt; Options +FollowSymlinks AllowOverride All Require all granted &lt;IfModule mod_dav.c&gt; Dav off &lt;/IfModule&gt; SetEnv HOME /var/www/html/ownCloud SetEnv HTTP_HOME /var/www/html/ownCloud &lt;/Directory&gt; ErrorLog ${APACHE_LOG_DIR}/error.log CustomLog ${APACHE_LOG_DIR}/access.log combined &lt;/VirtualHost&gt;",
+    "url": "http://localhost:4000/2019-04-03-Configuring_Apache_2_site_configuration_file_for_ownCloud.html",
+    "relUrl": "/2019-04-03-Configuring_Apache_2_site_configuration_file_for_ownCloud.html"
+  },
+  "4": {
+    "id": "4",
+    "title": "Creating ownCloud database",
+    "content": "Creating ownCloud database * To create ownCloud database: Run the following command to login to the Database Server, and enter the root password provided during Maria DB installation: sudo mysql -u root -p Run the following command to create ownCloud Database: CREATE DATABASE ownCloud Run the following command to create ownClouduser database user with a new password: CREATE USER &#39;ownClouduser&#39;@&#39;localhost&#39; IDENTIFIED BY ‘new_password_here&#39; Run the following command to grant full access to the database: GRANT ALL ON ownCloud.* TO &#39;ownClouduser&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;user_password_here&#39; WITH GRANT OPTION Run the following command to Save and Exit: FLUSH PRIVILEGES EXIT",
+    "url": "http://localhost:4000/2019-04-03-Creating_ownCloud_database.html",
+    "relUrl": "/2019-04-03-Creating_ownCloud_database.html"
+  },
+  "5": {
+    "id": "5",
+    "title": "Deployment Recommendations",
+    "content": "Deployment Recommendations Deployment of ownCloud depends on the customers requirement, need, and based on the IT infrastructure.",
+    "url": "http://localhost:4000/2019-04-03-Deployment_Recommendations.html",
+    "relUrl": "/2019-04-03-Deployment_Recommendations.html"
+  },
+  "6": {
+    "id": "6",
+    "title": "Downloading ownCloud",
+    "content": "Downloading ownCloud * To download latest version of ownCloud: Run the following command to extract latest version of ownCloud downloaded file in the Apache 2 root directory: cd /tmp &amp;&amp; wget https://download.ownCloud.org/community/ownCloud-10.0.10.zip unzip ownCloud-10.0.10.zip sudo mv ownCloud /var/www/html/ownCloud/ Run the following command to set the correct permissions for ownCloud: sudo chown -R www-data:www-data /var/www/html/ownCloud/`` sudo chmod -R 755 /var/www/html/ownCloud/",
+    "url": "http://localhost:4000/2019-04-03-Downloading_ownCloud.html",
+    "relUrl": "/2019-04-03-Downloading_ownCloud.html"
+  },
+  "7": {
+    "id": "7",
+    "title": "Enabling ownCloud and Rewriting the module",
+    "content": "Enabling ownCloud and Rewriting the module *To enable ownCloud and rewriting the module: Run the following command, once the virtual host is configured: sudo a2ensite ownCloud.conf sudo a2enmod rewrite sudo a2enmod headers sudo a2enmod env sudo a2enmod dir sudo a2enmod mime For more information on configuring virtual host, refer, Configuring Apache 2 site configuration file for ownCloud",
+    "url": "http://localhost:4000/2019-04-03-Enabling_ownCloud_and_Rewriting_the_module.html",
+    "relUrl": "/2019-04-03-Enabling_ownCloud_and_Rewriting_the_module.html"
+  },
+  "8": {
+    "id": "8",
+    "title": "Getting Help",
+    "content": "Getting Help The ownCloud support staff is available for 24 hours a day, seven days a week. If you need write to support center staff, please login to https://owncloud.com/licenses/owncloud-support-maintenance If you need to call the Support Center, make sure to provide the following items: Instances about the error or failure Debug information",
+    "url": "http://localhost:4000/2019-04-03-Getting_Help.html",
+    "relUrl": "/2019-04-03-Getting_Help.html"
+  },
+  "9": {
+    "id": "9",
+    "title": "Installation Prerequisites",
+    "content": "Installation Prerequisites Following are the prerequisites for installing ownCloud: Install Apache 2 to use ownCloud on a Web server. For more information, see, Installing Apache 2 on Ubunto Install Maria DB. For more information, see, Installing Maria DB Install PHP and its related modules. For more information, see, Installing PHP and related modules. Create ownCloud database, to store the required files on ownCloud. For more information, see, Creating ownCloud database. Download the latest version of ownCloud in the Apache 2 directory: /var/www/html/ownCloud/. For more information, see, Downloading ownCloud. Configure Apahce2 site configuration file for ownCloud. For more information, see, Configuring Apache 2 site configuration file for ownCloud. Enable the ownCloud and rewritable module after configuring the Virtual Host. For more information, see, Enabling ownCloud and Rewriting the module. Restart Apache 2 to apply all the settings. For more information, see, Restarting Apache 2.",
+    "url": "http://localhost:4000/2019-04-03-Installation_Prerequisites.html",
+    "relUrl": "/2019-04-03-Installation_Prerequisites.html"
+  },
+  "10": {
+    "id": "10",
+    "title": "Installing Apache 2 on Ubunto",
+    "content": "Installing Apache 2 on Ubunto To install Apache 2 on Ubunto: Run the following command to install Apache 2: sudo apt install apache2 Run the following command to disable the directory listing: sudo sed -i &quot;s/Options Indexes FollowSymLinks/Options FollowSymLinks/&quot; /etc/apache2/apache2.conf Run the following command to enable Apache 2 Service during server Start and Stop, and reboot: sudo systemctl stop apache2.service sudo systemctl start apache2.service sudo systemctl enable apache2.service",
+    "url": "http://localhost:4000/2019-04-03-Installing_Apache_2_on_Ubunto.html",
+    "relUrl": "/2019-04-03-Installing_Apache_2_on_Ubunto.html"
+  },
+  "11": {
+    "id": "11",
+    "title": "Installing Maria DB",
+    "content": "Installing Maria DB To install Maria DB: Run the following command: sudo apt-get install mariadb-Server mariadb-client Run the following command to and enable Maria DB service during server Start, Stop, and reboot: sudo systemctl stop mariadb.service sudo systemctl start mariadb.service sudo systemctl enable mariadb.service Run the following command to secure Maria DB Server: Run the following command to restart MariaDB Server: sudo systemctl restart mariadb.service",
+    "url": "http://localhost:4000/2019-04-03-Installing_Maria_DB.html",
+    "relUrl": "/2019-04-03-Installing_Maria_DB.html"
+  },
+  "12": {
+    "id": "12",
+    "title": "Installing ownCloud on desktop",
+    "content": "Installing ownCloud on desktop The ownCloud installer is available in the Apache 2 root directory /var/www/html/ownCloud/. You must run the installation wizard and accept the end user license agreement to proceed with the ownCloud installation. To install ownCloud: Open the browser and browse the Server domain name. Click Install ownCloud &lt;latest version&gt; setup. Follow the instruction of ownCloud setup wizard to complete the ownCloud installation.",
+    "url": "http://localhost:4000/2019-04-03-Installing_OwnCloud_on_desktop.html",
+    "relUrl": "/2019-04-03-Installing_OwnCloud_on_desktop.html"
+  },
+  "13": {
+    "id": "13",
+    "title": "Installing PHP and related modules",
+    "content": "Installing PHP and related modules To install PHP and related modules: Run the following command to install PHP and related modules: sudo apt install php libapache2-mod-php php-common libapache2-mod-php php-mbstring php-xmlrpc php-soap php-apcu php-smbclient php-ldap php- redis php-gd php-xml php-intl php-json php-imagick php-mysql php-cli php-mcrypt php-ldap php-zip php-curl",
+    "url": "http://localhost:4000/2019-04-03-Installing_PHP_and_related_modules.html",
+    "relUrl": "/2019-04-03-Installing_PHP_and_related_modules.html"
+  },
+  "14": {
+    "id": "14",
+    "title": "Installing ownCloud",
+    "content": "Installing ownCloud This chapter gives you detailed information on installing ownCloud and its Prerequisites Note: Before you start installing ownCloud , ensure all the system requirements and deployment recommendations are considered. For more information, see, [System Requirement](2019-04-03-System_Requirement) and [Deployment Recommendations](2019-04-03-Deployment_Recommendations)",
+    "url": "http://localhost:4000/2019-04-03-Installing_ownCloud%20.html",
+    "relUrl": "/2019-04-03-Installing_ownCloud%20.html"
+  },
+  "15": {
+    "id": "15",
+    "title": "Intended Audience",
+    "content": "Intended Audience This document is intended for developers, product managers, network specialists, sales and marketing personnel to install ownCloud on personal Servers.",
+    "url": "http://localhost:4000/2019-04-03-Intended-Audience.html",
+    "relUrl": "/2019-04-03-Intended-Audience.html"
+  },
+  "16": {
+    "id": "16",
+    "title": "Introduction",
+    "content": "Introduction The ownCloud is an open source file synchronization and data sharing solution. It helps you to operate, organize, retrieve the applications online, and access your data anytime and anywhere. ownCloud can be used by enterprises with size of more than 25 million users. There are around 2,00,000 installations of ownCloud of various versions available across the globe. To use ownCloud, you need to host ownCloud on the private Server or on cloud. This helps you to control the data, maintain privacy, and manage your files effectively. Hence, cloud computing overcomes platform dependency issues, as you need not install ownCloud on the local system.",
+    "url": "http://localhost:4000/2019-04-03-Introduction.html",
+    "relUrl": "/2019-04-03-Introduction.html"
+  },
+  "17": {
+    "id": "17",
+    "title": "Managing external storage support",
+    "content": "Managing external storage support The External Storage Support application helps you to mount external storage services and devices as secondary ownCloud storage devices. The application allows you to mount the external storage services such as such as, Amazon S3, Google Drive, Open Stack Object Storage, ownCloud, SFTP, SMB/CIFS fileServers, and WebDAV Servers in ownCloud.",
+    "url": "http://localhost:4000/2019-04-03-Managing-external-storage-support.html",
+    "relUrl": "/2019-04-03-Managing-external-storage-support.html"
+  },
+  "18": {
+    "id": "18",
+    "title": "Managing Users and Groups Accounts",
+    "content": "Managing Users and Groups Accounts The ownCloud administrator can set up different user accounts and groups, and assign appropriate privileges and permissions, based on the functions the user accounts and groups need to perform.",
+    "url": "http://localhost:4000/2019-04-03-Managing_Users_and_Groups_Accounts.html",
+    "relUrl": "/2019-04-03-Managing_Users_and_Groups_Accounts.html"
+  },
+  "19": {
+    "id": "19",
+    "title": "Overview of ownCloud Web Interface",
+    "content": "Overview of ownCloud Web Interface The ownCloud Web Interface (Web UI) consist of Header, Left, and Right navigation pane. Once you logon to ownCloud Web UI, you can add, remove, and share files, and make changes based on the access privileges. The following table provides a brief description of the web UI panes. Pane Description Header pane This pane includes the following items: - Section of the folder - Search - Login Left pane This pane includes the following: - All Files: Specifies list of files available on ownCloud folder. - Favorites: Specifies list of files marked as favorite. - Shared with you: Specifies files that are shared with the user. - Shared with others: Specifies files that are share with others or more than one user. - Shared by link: Specifies files that are shared using a link. Using this link the user is able to open the file. - Tags: Specifies the tagged files. - External Storage: Specifies the name of external storage where the files are stored. - Deleted Files: Specifies list of files that are deleted. These files do not appear in any of the folders on ownCloud. - Settings: Specifies any additional settings on Web UI. Right pane This pane displays the folders that are selected from the left navigation pane.",
+    "url": "http://localhost:4000/2019-04-03-Overview_of_ownCloud_Web_Interface.html",
+    "relUrl": "/2019-04-03-Overview_of_ownCloud_Web_Interface.html"
+  },
+  "20": {
+    "id": "20",
+    "title": "Preface",
+    "content": "Preface This document provides information about installing ownCloud for the latest version. on a private server or cloud and synchronizing the files from local system, mobile devices with ownCloud. The document also provides information about the ownCloud Web user interface and using this interface for effective and easy synchronization.",
+    "url": "http://localhost:4000/2019-04-03-Preface.html",
+    "relUrl": "/2019-04-03-Preface.html"
+  },
+  "21": {
+    "id": "21",
+    "title": "Prerequisites to synchronize calendars and contacts with CalDav and CardDAV",
+    "content": "Prerequisites to synchronize calendars and contacts with CalDav and CardDAV Following are the required prerequisites to synchronize calendars and contacts. Download and Install the latest version of Thunderbird. For more information on downloading thunderbird, see, http://www.mozilla.org/thunderbird/ Download and Install the following plugins: Lightning Sogo Connector These plugins are used to add a remote calendar and address book to thunderbird. For more information on downloading thunderbird, see, http://www.sogo.nu/english/downloads/frontends.html",
+    "url": "http://localhost:4000/2019-04-03-Prerequisites_to_synchronize_calendars_and_contacts_with_CalDav_and_CardDAV.html",
+    "relUrl": "/2019-04-03-Prerequisites_to_synchronize_calendars_and_contacts_with_CalDav_and_CardDAV.html"
+  },
+  "22": {
+    "id": "22",
+    "title": "Product Version",
+    "content": "Product Version This document revision applies to the ownCloud Version 10.0.10.",
+    "url": "http://localhost:4000/2019-04-03-Product_Version.html",
+    "relUrl": "/2019-04-03-Product_Version.html"
+  },
+  "23": {
+    "id": "23",
+    "title": "Related Documents",
+    "content": "Related Documents ownCloud Desktop Client Administrators Guide ownCloud Android App User’s Guide ownCloud iOS App User’s Guide",
+    "url": "http://localhost:4000/2019-04-03-Related_Documents.html",
+    "relUrl": "/2019-04-03-Related_Documents.html"
+  },
+  "24": {
+    "id": "24",
+    "title": "Restarting Apache 2",
+    "content": "Restarting Apache 2 * To restart apache 2:* Run the following command to apply all the settings: sudo systemctl restart apache2.service",
+    "url": "http://localhost:4000/2019-04-03-Restarting_Apache_2.html",
+    "relUrl": "/2019-04-03-Restarting_Apache_2.html"
+  },
+  "25": {
+    "id": "25",
+    "title": "Synchronizing Calendars and Contacts using ownCloud Clients",
+    "content": "Synchronizing Calendars and Contacts using ownCloud Clients Calendar and contacts always need to be properly managed on devices, when calendars and contacts are different on different devices like home computer, office computer, or smartphones. ownCloud helps you to manage all your calendar entries at one place. ownCloud uses CalDAV and CardDAV to keep all the calendar and contact information updated and synchronized. CalDAV and CardDAV are open standard applications which is used to send and receive calendar and contact information from one device to other. ownCloud allows you to access, update and synchronize calendars and contacts from other remote system. You need to use thunderbird as it is a cross platform email client and it works properly with CalDAV and CardDAV",
+    "url": "http://localhost:4000/2019-04-03-Synchronizing_Calendars_and_Contacts_using_ownCloud_Clients.html",
+    "relUrl": "/2019-04-03-Synchronizing_Calendars_and_Contacts_using_ownCloud_Clients.html"
+  },
+  "26": {
+    "id": "26",
+    "title": "Synchronizing calendars with CalDAV",
+    "content": "Synchronizing calendars with CalDAV To synchronize calendars with CalDAV Click Events and Tasks from the menu, and then click Calendar Book, to activate Thunderbird calendar. Click File from the menu, and then click New and select Calendar from the options, to create a New Calendar. Select any of the following to locate the calendar: On My Computer: Browse the calendar from your local computer. On the Network: Browse the calendar from external system. Click Globe icon on the Settings dialog box to fetch the CalDAV link. Enter the CalDAV URL to choose the calendar from ownCloud and click New Calendar. Enter the fields to customize your calendar and click Next. Field Name Description Name Enter name of the calendar Color Select color of the calendar from the color pallet. Show Reminders Select or de-select to show or hide email reminders Email Enter your email address Enter the Username and Password of ownCloud and click OK. Note: To remember the password, Select the Use Password Manager to remember this password check box. Thunderbird displays the Calendar. You can now edit your calendar for the required dates.",
+    "url": "http://localhost:4000/2019-04-03-Synchronizing_calendars_with_CalDAV.html",
+    "relUrl": "/2019-04-03-Synchronizing_calendars_with_CalDAV.html"
+  },
+  "27": {
+    "id": "27",
+    "title": "Synchronizing contacts with CardDAV",
+    "content": "Synchronizing contacts with CardDAV ***To synchronize contacts with CardDAV Click Tools from the menu, and then click Address Book, to activate Thunderbird address book. Click File from the menu, and then click New and select Remote Address Book from the options, to create a new Calendar. Enter the following and click OK, to create an address book profile. Field Description Name Enter a name for your address book. URL Enter the CardDAV URL from the ownCloud Contacts. Read Only Select or deselect the option to give read or write permission Click Settings in the contacts section, to find the URL. Click Globe icon for the required Address Book on the Settings dialog box page. Each address book has a different CardDAV link. Right-click Outreach Contacts in thunderbird and click Synchronize, to synchronize with the remote address book. Local address book is displayed in thunderbird, where all the contacts are fetched from the ownCloud. You can now add new contacts, edit the address book in thunderbird and synchronize with ownCloud Server.",
+    "url": "http://localhost:4000/2019-04-03-Synchronizing_contacts_with_CardDAV.html",
+    "relUrl": "/2019-04-03-Synchronizing_contacts_with_CardDAV.html"
+  },
+  "28": {
+    "id": "28",
+    "title": "Synchronizing files in ownCloud",
+    "content": "Synchronizing files in ownCloud",
+    "url": "http://localhost:4000/2019-04-03-Synchronizing_files_in_ownCloud.html",
+    "relUrl": "/2019-04-03-Synchronizing_files_in_ownCloud.html"
+  },
+  "29": {
+    "id": "29",
+    "title": "Synchronizing files with Delta Sync",
+    "content": "Synchronizing files with Delta Sync The Deltasync method of synchronizing files helps to reduce the volume of data transmission of files. During Deltasync, only the updated files are synchronized and not the complete list of file set. The client only uploads or downloads the modified sections of the files which improves the data transfer rate and reduces the connectivity period.",
+    "url": "http://localhost:4000/2019-04-03-Synchronizing_files_with_Delta_Sync.html",
+    "relUrl": "/2019-04-03-Synchronizing_files_with_Delta_Sync.html"
+  },
+  "30": {
+    "id": "30",
+    "title": "Synchronizing files with Desktop and Mobile Clients",
+    "content": "Synchronizing files with Desktop and Mobile Clients ownCloud helps you to synchronize the files from the ownCloud server to your local desktop and mobile. The ownCloud client displays the current connection status and keeps track of all the activities in a log file. This helps to identify if the remote files are downloaded to your local desktop. Once the files are downloaded you can update them on your local desktop and synchronize with the Server.",
+    "url": "http://localhost:4000/2019-04-03-Synchronizing_files_with_Desktop_and_Mobile_Clients.html",
+    "relUrl": "/2019-04-03-Synchronizing_files_with_Desktop_and_Mobile_Clients.html"
+  },
+  "31": {
+    "id": "31",
+    "title": "System Requirement",
+    "content": "System Requirement Installing ownCloud requires the following system requirement Platform Name and Version Operating System - SUSE Linux Enterprise Server 12 with SP1, SP2 and SP3 - Red Hat Enterprise Linux 6 and 7 - Ubuntu 16.04 and 18.04 - openSUSE Tumbleweed and Leap 15.0 and 42.3 - Fedora 27 and 28 - Debian 7 and 8 - Centos Linux 6 and 7 Database - MySQL - Oracle - PostgreSQL or SQLite Web Server Apache 2.4 PHP 7.2 Web browser - Firefox 14+ - Chrome 18+ - Safari 5+ - IE11+",
+    "url": "http://localhost:4000/2019-04-03-System_Requirement.html",
+    "relUrl": "/2019-04-03-System_Requirement.html"
+  },
+  "32": {
+    "id": "32",
+    "title": "System Requirement",
+    "content": "System Requirement Following are the set of system requirement during deployment: Operating system: Linux Web Server: Apache 2.4 Database: MySQL/MariaDB with InnoDB storage engine PHP 7.2 ownCloud Administrators must have Command Line Interface 2 to 4 application Servers A cluster of two database Servers Storage on an NFS Server One system running the application, web, and database Server, on local storage Authentication via an existing LDAP or Active Directory Server Standard installed SSL certificate",
+    "url": "http://localhost:4000/2019-04-03-System_Requirement_Deployment.html",
+    "relUrl": "/2019-04-03-System_Requirement_Deployment.html"
+  },
+  "33": {
+    "id": "33",
+    "title": "Understanding ownCloud Web Interface",
+    "content": "Understanding ownCloud Web Interface The ownCloud Web Interface (Web UI) allows you to connect to ownCloud Server using a Web Browser. For more information on Supported Web browsers, see, System Requirement Once you open the ownCloud web interface, you must enter the username and password to access the ownCloud client.",
+    "url": "http://localhost:4000/2019-04-03-Understanding_ownCloud_Web_Interface.html",
+    "relUrl": "/2019-04-03-Understanding_ownCloud_Web_Interface.html"
+  },
+  "34": {
+    "id": "34",
+    "title": "User and Group Permissions",
+    "content": "User and Group Permissions An administrator configures a storage for a user or group and assigns permission to a single user or the list of users in the group to perform activity on that storage. There are two predefined user accounts in ownCloud: admin: The administrator account for ownCloud. default: A standard user account that can be used to perform various operations in ownCloud. Grant Privileges: You can restrict these default settings to users or groups. Specific privileges are granted to users and groups for the storage devices. To grant user and group privileges: Select the user or group from the list of User list or Group list. Click Arrow to grant permission. Users and groups granted permission are moved to Available for section, and the list is displayed.",
+    "url": "http://localhost:4000/2019-04-03-User_and_Group_Permissions.html",
+    "relUrl": "/2019-04-03-User_and_Group_Permissions.html"
+  },
+  "35": {
+    "id": "35",
+    "title": "Using ownCloud Web Interface",
+    "content": "Using ownCloud Web Interface ownCloud Web interface helps you to add, remove, and share files, and make changes based on the access privileges set by the Server administrator. In the ownCloud Web interface, you can configure the ownCloud client and select the directory to save and synchronize the files in any local directory. You can synchronize the files placed on ownCloud on your: Desktop Mobile client",
+    "url": "http://localhost:4000/2019-04-03-Using_ownCloud_Web_Interface.html",
+    "relUrl": "/2019-04-03-Using_ownCloud_Web_Interface.html"
+  },
+  "36": {
+    "id": "36",
+    "title": "What’s New in this release",
+    "content": "What’s New in this release Option to hide or expose hidden files in the Web GUI Use at least desktop client version 2.0 by default.",
+    "url": "http://localhost:4000/2019-04-03-Whats_New_in_this_release.html",
+    "relUrl": "/2019-04-03-Whats_New_in_this_release.html"
+  },
+  "37": {
+    "id": "37",
+    "title": "ownCloud Overview",
+    "content": "ownCloud Overview ownCloud web interface allows you to share one or more files and folders on your computer or mobile and synchronize them with your ownCloud Server. Once the files are placed in your local shared directories, they are immediately synchronized to the Server and to other devices using the ownCloud Desktop Sync Client, Android app, or iOS app. To know more about the ownCloud desktop and mobile clients, please refer: ownCloud Desktop Client Administrators Guide ownCloud Android App User’s Guide ownCloud iOS App User’s Guide",
+    "url": "http://localhost:4000/2019-04-03-ownCloud_Overview.html",
+    "relUrl": "/2019-04-03-ownCloud_Overview.html"
+  },
+  "38": {
+    "id": "38",
+    "title": "Contact",
+    "content": "This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at jekyllrb.com You can find the source code for Minima at GitHub: jekyll / minima You can find the source code for Jekyll at GitHub: jekyll / jekyll",
+    "url": "http://localhost:4000/about/",
+    "relUrl": "/about/"
+  },
+  "39": {
+    "id": "39",
+    "title": "",
+    "content": "",
+    "url": "http://localhost:4000/",
+    "relUrl": "/"
+  }
+  
+}
