@@ -32,7 +32,6 @@ remote_theme: pmarsceill/just-the-docs
 search_enabled: true
 future: true
 
-remote_theme: just-the-docs
 plugins:
   - jekyll-feed
 
